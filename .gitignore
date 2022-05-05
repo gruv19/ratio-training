@@ -7,3 +7,4 @@ npm-debug.log*
 
 module1/additional/
 module2/node_modules/
+module3/db.ts

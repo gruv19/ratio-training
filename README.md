@@ -11,4 +11,4 @@
 [Папка c кодом проекта](https://github.com/gruv19/ratio-training/tree/master/module2)
 
 ### 3-й модуль - проект изучения Node, Mongo, Typescript
-В работе
+[Папка c кодом проекта](https://github.com/gruv19/ratio-training/tree/master/module3)

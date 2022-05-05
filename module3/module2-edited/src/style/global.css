@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/fonts/Ubuntu-Bold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../assets/fonts/Ubuntu-Medium.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/Ubuntu-Regular.ttf") format("ttf");
+}
+
+:root {
+  --main-font: "Ubuntu", sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  user-select: none;
+  font-family: var(--main-font);
+  font-weight: 400;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+  user-select: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFFBF8;
+}

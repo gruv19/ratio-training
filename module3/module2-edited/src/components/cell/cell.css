@@ -1,0 +1,239 @@
+.cell {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation-name: size;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+  transition: left 0.1s, top 0.1s;
+}
+
+@keyframes size {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.cell--2 {
+  font-size: 20px;
+  color: #000000;
+  background-color: #F0E6EF;
+}
+
+.cell--4 {
+  font-size: 20px;
+  color: #000000;
+  background-color: #D4D2E6;
+}
+
+.cell--8 {
+  font-size: 20px;
+  color: #000000;
+  background-color: #B8BEDD;
+}
+
+.cell--16 {
+  font-size: 20px;
+  color: #000000;
+  background-color: #EFC3E6;
+}
+
+.cell--32 {
+  font-size: 20px;
+  color: #000000;
+  background-color: #F0A6CA;
+}
+
+.cell--64 {
+  font-size: 20px;
+  color: #000000;
+  background-color: #C698C1;
+}
+
+.cell--128 {
+  font-size: 20px;
+  color: #000000;
+  background-color: #9C89B8;
+  letter-spacing: -2px;
+}
+
+.cell--256 {
+  font-size: 20px;
+  color: #000000;
+  background-color: #588B8B;
+  letter-spacing: -2px;
+}
+
+.cell--512 {
+  font-size: 20px;
+  color: #000000;
+  background-color: #ACC5C5;
+  letter-spacing: -2px;
+}
+
+.cell--1024 {
+  font-size: 19px;
+  color: #000000;
+  background-color: #FFD5C2;
+  letter-spacing: -1px;
+}
+
+.cell--2048 {
+  top: 10px;
+  left: 10px;
+  font-size: 19px;
+  color: #000000;
+  background-color: #89DFC1;
+  letter-spacing: -1px;
+}
+
+.cell--4096 {
+  font-size: 19px;
+  color: #000000;
+  background-color: #C9D8BF;
+  letter-spacing: -1px;
+}
+
+.cell--8192 {
+  font-size: 19px;
+  color: #000000;
+  background-color: #A9998E;
+  letter-spacing: -1px;
+}
+
+.cell--16384 {
+  font-size: 17px;
+  color: #000000;
+  background-color: #3F7CAC;
+  letter-spacing: -2px;
+}
+
+.cell--32768 {
+  font-size: 17px;
+  color: #000000;
+  background-color: #95AFBA;
+  letter-spacing: -2px;
+}
+
+.cell--65536 {
+  font-size: 17px;
+  color: #000000;
+  background-color: #BDC4A7;
+  letter-spacing: -2px;
+}
+
+.cell--131072 {
+  font-size: 13px;
+  color: #000000;
+  background-color: #FD8B96;
+  letter-spacing: -1px;
+}
+
+.cell--262144 {
+  font-size: 13px;
+  color: #000000;
+  background-color: #FFCBDD;
+  letter-spacing: -1px;
+}
+
+.cell--524288 {
+  font-size: 13px;
+  color: #000000;
+  background-color: #DF9BB1;
+  letter-spacing: -1px;
+}
+
+.cell--1048576 {
+  font-size: 13px;
+  color: #000000;
+  background-color: #F7E294;
+  letter-spacing: -2px;
+}
+
+.cell--2097152 {
+  font-size: 13px;
+  color: #000000;
+  background-color: #F6B573;
+  letter-spacing: -2px;
+}
+
+.cell--4194304 {
+  font-size: 13px;
+  color: #000000;
+  background-color: #F5A368;
+  letter-spacing: -2px;
+}
+
+.cell--8388608 {
+  font-size: 13px;
+  color: #000000;
+  background-color: #FF9FB2;
+  letter-spacing: -2px;
+}
+
+.cell--16777216 {
+  font-size: 11px;
+  color: #000000;
+  background-color: #FBDCE2;
+  letter-spacing: -1px;
+}
+
+.cell--33554432 {
+  font-size: 11px;
+  color: #000000;
+  background-color: #83D5F1;
+  letter-spacing: -1px;
+}
+
+.cell--67108864 {
+  font-size: 11px;
+  color: #000000;
+  background-color: #47D1F8;
+  letter-spacing: -1px;
+}
+
+
+@media (min-width: 767px) {
+  .cell {
+    width: 84px;
+    height: 84px;
+    border-radius: 10px;
+  }
+  .cell--2, .cell--4, .cell--8, .cell--16,
+  .cell--32, .cell--64 {
+    font-size: 24px;
+  }
+
+  .cell--128, .cell--256, .cell--512 {
+    font-size: 24px;
+  }
+
+  .cell--1024, .cell--2048, .cell--4096, .cell--8192 {
+    font-size: 24px;
+  }
+
+  .cell--16384, .cell--32768, .cell--65536 {
+    font-size: 23px;
+  }
+
+  .cell--131072, .cell--262144, .cell--524288 {
+    font-size: 21px;
+  }
+
+  .cell--1048576, .cell--2097152, .cell--4194304, .cell--8388608 {
+    font-size: 19px;
+  }
+
+  .cell--16777216, .cell--33554432, .cell--67108864 {
+    font-size: 18px;
+    letter-spacing: -1px;
+  }
+}
