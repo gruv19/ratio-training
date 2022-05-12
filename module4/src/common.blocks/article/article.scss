@@ -1,25 +1,31 @@
 .article{
   margin: 0 auto;
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     display: grid;
     grid-template-columns: calc(100% - 430px) 430px;
     grid-column-gap: 22.5px;
     max-width: 856px;
   }
-  @media (min-width: 1366px) {
+  @media (min-width: $screen_max) {
     grid-column-gap: 55px;
+  }
+}
+.article + .article {
+  margin-top: 25px;
+  @media (min-width: $screen_max) {
+    margin-top: 50px;
   }
 }
 .article--featured {
   padding: 0 25px;
   position: relative;
   margin: 0px auto 50px;
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     display: block;
     margin: 0px auto 55px;
     max-width: unset;
   }
-  @media (min-width: 1366px) {
+  @media (min-width: $screen_max) {
     max-width: 1366px;
     margin: 0 auto 50px;
   }
@@ -27,32 +33,32 @@
 .article--banner{
   @extend .article--featured;
   margin: 25px auto;
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     display: block;
     margin: 80px auto 25px;
     max-width: unset;
   }
-  @media (min-width: 1366px) {
+  @media (min-width: $screen_max) {
     max-width: 1366px;
     margin: 62px auto 25px;
   }
 }
 .article__img{
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     object-fit: cover;
     height: 100%;
   }
 }
 .article--featured .article__img{
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     object-fit: unset;
     height: unset;
     display: block;
   }
 }
 .article--featured .article__content{
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     position: absolute;
     background-color: #FFFFFF;
     width: 509px;
@@ -60,65 +66,33 @@
     top: 0;
     left: 70px;
   }
-  @media (min-width: 1366px) {
+  @media (min-width: $screen_max) {
     padding: 76px 40px 96px 39px;
   }
 }
 .article--banner .article__content{
-  @media (min-width: 1366px) {
+  @media (min-width: $screen_max) {
     top: 54px;
     left: unset;
     right: 103px;
   }
 }
 .article__tag{
-  font-family: 'OpenSans', sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 400;
-  color: rgba(#1C1C1C, 0.5);
+  @include tagFontParams;
   padding: 0;
   margin: 0 0 8px;
-  @media (min-width: 768px) {
-    font-size: 14px;
-    line-height: 19px;
-  }
-  @media (min-width: 1366px) {
-    font-size: 20px;
-    line-height: 27px;
-  }
 }
 .article__title{
-  font-family: 'LibreBaskerville', serif;
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 700;
-  color: #000000;
+  @include smallTitleFontParams;
   padding: 0;
   margin: 0 0 8px;
-  @media (min-width: 768px) {
-    font-size: 24px;
-    line-height: 30px;
-  }
-  @media (min-width: 1366px) {
-    font-size: 33px;
-    line-height: 41px;
-  }
 }
 .article__meta{
+  @include metaFontParams;
   display: flex;
   align-items: center;
-  font-family: 'OpenSans', sans-serif;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 400;
-  color: rgba(#1C1C1C, 0.5);
   padding: 0;
   margin: 0 0 8px;
-  @media (min-width: 1366px) {
-    font-size: 16px;
-    line-height: 22px;
-  }
 }
 .article__divider{
   width: 3px;
@@ -129,15 +103,7 @@
   margin: 0 8px;
 }
 .article__text{
-  font-family: 'OpenSans', sans-serif;
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: 400;
-  color: #000000;
+  @include textFontParams;
   padding: 0;
   margin: 0;
-  @media (min-width: 1366px) {
-    font-size: 16px;
-    line-height: 24px;
-  }
 }

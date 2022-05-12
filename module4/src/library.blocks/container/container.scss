@@ -1,8 +1,8 @@
 .container {
   margin: 0 auto;
-  min-width: 320px;
+  min-width: $screen_min;
   padding: 0 25px;
-  @media (min-width: 1366px) {
-    max-width: 1366px;
+  @media (min-width: $screen_max) {
+    max-width: $screen_max;
   }
 }

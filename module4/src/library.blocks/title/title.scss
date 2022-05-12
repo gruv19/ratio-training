@@ -1,11 +1,9 @@
-// @media (min-width: 768px) {}
-// @media (min-width: 1366px) {}
 .title{
   margin-bottom: 30px;
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     margin-bottom: 91px;
   }
-  @media (min-width: 1366px) {
+  @media (min-width: $screen_max) {
     margin-bottom: 54px;
   }
 }
@@ -13,17 +11,17 @@
   margin: 0 0 11px;
   padding: 0;
   text-align: center;
-  font-family: 'OpenSans', sans-serif;
+  font-family: $main_font;
   font-weight: 700;
   font-size: 24px;
   line-height: 33px;
   color: #1C1C1C;
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     font-size: 36px;
     line-height: 49px;
     margin: 0 0 5px;
   }
-  @media (min-width: 1366px) {
+  @media (min-width: $screen_max) {
     font-size: 42px;
     line-height: 57px;
     margin: 0 0 17px;
@@ -34,10 +32,10 @@
   height: 5px;
   background-color: #1C1C1C;
   margin: 0 auto;
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     width: 220px;
   }
-  @media (min-width: 1366px) {
+  @media (min-width: $screen_max) {
     width: 190px;
   }
 }

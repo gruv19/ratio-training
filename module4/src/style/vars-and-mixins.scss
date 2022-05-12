@@ -1,0 +1,62 @@
+$main_font: 'OpenSans', sans-serif;
+$secondary_font: 'LibreBaskerville', serif;
+
+$screen_min: 320px;
+$screen_medium: 768px;
+$screen_max: 1366px;
+
+@mixin tagFontParams {
+  font-family: $main_font;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: rgba(#1C1C1C, 0.5);
+  @media (min-width: $screen_medium) {
+    font-size: 14px;
+    line-height: 19px;
+  }
+  @media (min-width: $screen_max) {
+    font-size: 20px;
+    line-height: 27px;
+  }
+}
+
+@mixin smallTitleFontParams {
+  font-family: $secondary_font;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #000000;
+  @media (min-width: $screen_medium) {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  @media (min-width: $screen_max) {
+    font-size: 33px;
+    line-height: 41px;
+  }
+}
+
+@mixin metaFontParams {
+  font-family: $main_font;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: rgba(#1C1C1C, 0.5);
+  @media (min-width: $screen_max) {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+@mixin textFontParams {
+  font-family: $main_font;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #000000;
+  @media (min-width: $screen_max) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

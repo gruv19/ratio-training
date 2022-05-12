@@ -4,7 +4,7 @@
   margin: 0;
   background-color: #FFFFFF;
   box-shadow: 0px 5px 5px -3px rgb(#000000, 0.3);
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     display: flex;
     background-color: transarent;
     box-shadow: none;
@@ -19,22 +19,22 @@
   &:hover .nav__link--active {
     text-decoration: none;
   }
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     padding: 0;
   }
 }
 .nav__item + .nav__item {
-  @media (min-width: 768px) {
+  @media (min-width: $screen_medium) {
     margin-left: 8px;
   }
-  @media (min-width: 1366px) {
+  @media (min-width: $screen_max) {
     margin-left: 21px;
   }
 }
 .nav__link{
   color: #000;
   text-decoration: none;
-  font-family: 'LibreBaskerville', serif;
+  font-family: $secondary_font;
   font-size: 20px;
   font-weight: 400;
   &--active{

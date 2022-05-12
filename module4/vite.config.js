@@ -16,13 +16,14 @@ export default {
       input: {
         main: resolve(root, 'index.html'),
         about: resolve(root, 'about.html'),
+        blog: resolve(root, 'blog.html'),
       },
     },
   },
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '',
+        additionalData: `@import '@/style/vars-and-mixins.scss';`,
       },
     },
   },
