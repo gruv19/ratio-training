@@ -4,6 +4,7 @@ import Header from '../../common.blocks/header/header';
 import Container from '../../library.blocks/container/container';
 import Article from '../../common.blocks/article/article';
 import Title from '../../library.blocks/title/title';
+import { setSEO } from '../../utils';
 
 const header = new Header();
 const featuredArtice = new Article('featured');
@@ -13,6 +14,8 @@ const artice1 = new Article();
 const artice2 = new Article();
 const artice3 = new Article();
 const bannerArtice = new Article('banner');
+
+setSEO('nuntium. - main');
 
 app.append(header.getElement());
 app.append(featuredArtice.getElement());
