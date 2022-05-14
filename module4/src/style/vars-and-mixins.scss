@@ -60,3 +60,15 @@ $screen_max: 1366px;
     line-height: 24px;
   }
 }
+
+@mixin pageNameFontParams {
+  font-family: $secondary_font;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+  color: #000000;
+  @media (min-width: $screen_max) {
+    font-size: 42px;
+    line-height: 52px;
+  }
+}
