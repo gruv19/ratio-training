@@ -8,9 +8,20 @@ class Logo {
 
   getElement() {
     if (!this.element) {
-      this.element = new Image();
-      this.element.src = imageSrc;
-      this.element.classList.add('logo');
+      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        this.element = new Image();
+        this.element.src = imageSrc;
+        this.element.classList.add('logo');
+      } else {
+        const logoImage = new Image();
+        logoImage.src = imageSrc;
+        logoImage.classList.add('logo__image');
+
+        this.element = document.createElement('a');
+        this.element.classList.add('logo');
+        this.element.setAttribute('href', '/');
+        this.element.append(logoImage);
+      }
     }
     return this.element;
   }
