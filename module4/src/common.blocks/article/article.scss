@@ -26,7 +26,7 @@
     max-width: unset;
   }
   @media (min-width: $screen_max) {
-    max-width: 1366px;
+    max-width: $content_max;
     margin: 0 auto 50px;
   }
 }
@@ -39,7 +39,7 @@
     max-width: unset;
   }
   @media (min-width: $screen_max) {
-    max-width: 1366px;
+    max-width: $content_max;
     margin: 62px auto 25px;
   }
 }

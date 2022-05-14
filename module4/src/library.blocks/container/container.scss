@@ -3,7 +3,7 @@
   min-width: $screen_min;
   padding: 0 25px;
   @media (min-width: $screen_max) {
-    max-width: $screen_max;
+    max-width: $content_max;
   }
 }
 .container--blog{

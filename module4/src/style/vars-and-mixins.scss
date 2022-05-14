@@ -2,8 +2,9 @@ $main_font: 'OpenSans', sans-serif;
 $secondary_font: 'LibreBaskerville', serif;
 
 $screen_min: 320px;
-$screen_medium: 768px;
-$screen_max: 1366px;
+$screen_medium: 720px;
+$screen_max: 1024px;
+$content_max: 1366px;
 
 @mixin tagFontParams {
   font-family: $main_font;
