@@ -7,7 +7,7 @@ import Title from '../../library.blocks/title/title';
 
 const header = new Header();
 const featuredArtice = new Article('featured');
-const articlesContainer = new Container();
+const articlesContainer = new Container('blog');
 const title = new Title();
 const articlesCount = 6;
 

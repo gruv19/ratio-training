@@ -6,3 +6,12 @@
     max-width: $screen_max;
   }
 }
+.container--blog{
+  padding: 0 25px 25px;
+}
+.container--about{
+  padding: 0 25px 25px;
+  @media (min-width: $screen_max) {
+    margin-top: 182px;
+  }
+}

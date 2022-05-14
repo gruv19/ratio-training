@@ -5,7 +5,7 @@ import Container from '../../library.blocks/container/container';
 import Title from '../../library.blocks/title/title';
 
 const header = new Header();
-const pageContainer = new Container();
+const pageContainer = new Container('about');
 const title = new Title();
 
 const content = `<p>
