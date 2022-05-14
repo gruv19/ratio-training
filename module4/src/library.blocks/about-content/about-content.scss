@@ -1,0 +1,42 @@
+.about-content{
+  @media (min-width: $screen_medium) {
+    padding: 0 23px;
+  }
+  @media (min-width: $screen_max) {
+    padding: 0 218px 0 242px;
+  }
+}
+
+.about-content > p{
+  @include textFontParams;
+  margin: 0;
+}
+
+.about-content > p:first-child {
+  @media (min-width: $screen_medium) {
+    display: flex;
+  }
+}
+
+.about-content > p + p{
+  margin-top: 24px;
+  @media (min-width: $screen_medium) {
+    margin-top: 25px;
+  }
+  @media (min-width: $screen_max) {
+    margin-top: 29px;
+  }
+}
+
+.about-content img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  margin-top: 24px;
+  @media (min-width: $screen_medium) {
+    margin: 0 0 0 18px;
+    display: inline-block;
+    max-width: unset;
+    max-height: unset;
+  }
+}

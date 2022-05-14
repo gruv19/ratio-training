@@ -3,35 +3,20 @@ import '../../style/global.scss';
 import Header from '../../common.blocks/header/header';
 import Container from '../../library.blocks/container/container';
 import PageName from '../../library.blocks/page-name/page-name';
+import AboutContent from '../../library.blocks/about-content/about-content';
+
+let content = await fetch('https://course.7t33n.ru/rest/v1/about');
+content = await content.json();
+content = content.content;
 
 const header = new Header();
 const pageContainer = new Container('about');
-const aboutPageName = new PageName('About nuntium')
-
-const content = `<p>
-  Commodo labore ut nisi laborum amet eu qui magna ullamco ut labore.
-  Aliquip consectetur labore consectetur dolor exercitation est minim quis.
-  Magna non irure qui ex est laborum nulla excepteur qui.
-  Anim Lorem dolore cupidatat pariatur ex tempor.
-  Duis ea excepteur proident ex commodo irure est.
-</p>
-<p>
-  Nisi commodo qui pariatur enim sint laborum consequat enim in officia.
-  Officia fugiat incididunt commodo et mollit aliqua non aute.
-  Enim dolor eiusmod aliqua amet ipsum in enim eiusmod.
-  Quis exercitation sit velit duis.
-</p>
-<p>
-  Commodo labore ut nisi laborum amet eu qui magna ullamco ut labore.
-  Aliquip consectetur labore consectetur dolor exercitation est minim quis.
-  Magna non irure qui ex est laborum nulla excepteur qui.
-  Anim Lorem dolore cupidatat pariatur ex tempor.
-  Duis ea excepteur proident ex commodo irure est.
-</p>`
+const aboutPageName = new PageName('About nuntium');
+const aboutContent = new AboutContent(content);
 
 app.append(header.getElement());
 app.append(pageContainer.getElement());
 pageContainer.getElement().append(aboutPageName.getElement());
-pageContainer.getElement().insertAdjacentHTML('beforeend', content);
+pageContainer.getElement().append(aboutContent.getElement());
 
 header.setMenuHandler();
