@@ -10,7 +10,7 @@ class Header {
     this.element = null;
     this.logo = new Logo();
     this.burger = new BurgerButton();
-    this.nav = new Nav();
+    this.nav = new Nav(window.location.pathname);
   }
 
   getElement() {

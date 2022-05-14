@@ -2,15 +2,16 @@ import './nav.scss';
 import navTemplate from './nav.template';
 
 class Nav {
-  constructor() {
+  constructor(path) {
     this.state = false;
     this.element = null;
+    this.path = path;
   }
 
   getElement() {
     if (!this.element) {
       const temporaryElement = document.createElement('div');
-      temporaryElement.innerHTML = navTemplate();
+      temporaryElement.innerHTML = navTemplate(this.path);
       this.element = temporaryElement.firstElementChild;
     }
     return this.element;
