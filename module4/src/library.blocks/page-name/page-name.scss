@@ -1,0 +1,6 @@
+.page-name {
+  @include pageNameFontParams;
+  margin: 0 0 13px;
+  padding: 0;
+  text-align: center;
+}

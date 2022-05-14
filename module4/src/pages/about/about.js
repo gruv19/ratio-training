@@ -2,11 +2,11 @@ import '../../style/font.scss';
 import '../../style/global.scss';
 import Header from '../../common.blocks/header/header';
 import Container from '../../library.blocks/container/container';
-import Title from '../../library.blocks/title/title';
+import PageName from '../../library.blocks/page-name/page-name';
 
 const header = new Header();
 const pageContainer = new Container('about');
-const title = new Title();
+const aboutPageName = new PageName('About nuntium')
 
 const content = `<p>
   Commodo labore ut nisi laborum amet eu qui magna ullamco ut labore.
@@ -31,5 +31,7 @@ const content = `<p>
 
 app.append(header.getElement());
 app.append(pageContainer.getElement());
-pageContainer.getElement().append(title.getElement());
+pageContainer.getElement().append(aboutPageName.getElement());
 pageContainer.getElement().insertAdjacentHTML('beforeend', content);
+
+header.setMenuHandler();
