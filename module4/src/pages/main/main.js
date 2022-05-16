@@ -6,23 +6,38 @@ import Article from '../../common.blocks/article/article';
 import Title from '../../library.blocks/title/title';
 import { setSEO } from '../../utils';
 
-const header = new Header();
-const featuredArtice = new Article('featured');
-const articlesContainer = new Container();
-const title = new Title();
-const artice1 = new Article();
-const artice2 = new Article();
-const artice3 = new Article();
-const bannerArtice = new Article('banner');
+document.addEventListener('DOMContentLoaded', async () => {
+  setSEO('nuntium. - home');
 
-setSEO('nuntium. - main');
+  const featuredArticleContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/featured/')).json();
+  const articlesContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/articles/')).json();
+  const articlesCount = 3;
 
-app.append(header.getElement());
-app.append(featuredArtice.getElement());
-app.append(articlesContainer.getElement());
-articlesContainer.getElement().append(title.getElement());
-articlesContainer.getElement().append(artice1.getElement());
-articlesContainer.getElement().append(artice2.getElement());
-articlesContainer.getElement().append(artice3.getElement());
-app.append(bannerArtice.getElement());
-header.setMenuHandler();
+  const appContainer = document.querySelector('#app');
+
+  const header = new Header();
+  appContainer.append(header.getElement());
+  header.setMenuHandler();
+
+  const featuredArticle = new Article(featuredArticleContent, 'featured');
+  appContainer.append(featuredArticle.getElement());
+
+  const articlesContainer = new Container();
+  appContainer.append(articlesContainer.getElement());
+
+  const title = new Title();
+  articlesContainer.getElement().append(title.getElement());
+
+  for (let i = articlesContent.length - 1; i >= articlesContent.length - articlesCount; i--) {
+    const article = new Article(articlesContent[i]);
+    articlesContainer.getElement().append(article.getElement());
+  }
+
+  const bannerArtice = new Article(articlesContent[articlesContent.length - articlesCount - 1], 'banner');
+  appContainer.append(bannerArtice.getElement());
+});
+
+window.addEventListener('hashchange', (e) => {
+  e.preventDefault();
+  console.log('ssssss');
+});

@@ -9,20 +9,21 @@ import { setSEO } from '../../utils';
 document.addEventListener('DOMContentLoaded', async () => {
   const data = await (await fetch('https://course.7t33n.ru/rest/v1/about')).json();
 
-  const header = new Header();
-  const pageContainer = new Container('about');
-  const aboutPageName = new PageName(data.title);
-  const aboutContent = new AboutContent(data.content);
+  setSEO(data.seo.title, data.seo.description, data.seo.keywords);
 
   const appContainer = document.querySelector('#app');
 
-  setSEO(data.seo.title, data.seo.description, data.seo.keywords);
-
+  const header = new Header();
   appContainer.append(header.getElement());
-  appContainer.append(pageContainer.getElement());
-  pageContainer.getElement().append(aboutPageName.getElement());
-  pageContainer.getElement().append(aboutContent.getElement());
-
   header.setMenuHandler();
+
+  const pageContainer = new Container('about');
+  appContainer.append(pageContainer.getElement());
+
+  const aboutPageName = new PageName(data.title);
+  pageContainer.getElement().append(aboutPageName.getElement());
+
+  const aboutContent = new AboutContent(data.content);
+  pageContainer.getElement().append(aboutContent.getElement());
 });
 

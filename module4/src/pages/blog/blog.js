@@ -6,19 +6,29 @@ import Article from '../../common.blocks/article/article';
 import Title from '../../library.blocks/title/title';
 import { setSEO } from '../../utils';
 
-const header = new Header();
-const featuredArtice = new Article('featured');
-const articlesContainer = new Container('blog');
-const title = new Title();
-const articlesCount = 6;
+document.addEventListener('DOMContentLoaded', async () => {
+  setSEO('nuntium. - blog');
 
-setSEO('nuntium. - blog');
+  const featuredArticleContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/featured/')).json();
+  const articlesContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/articles/')).json();
 
-app.append(header.getElement());
-app.append(featuredArtice.getElement());
-app.append(articlesContainer.getElement());
-articlesContainer.getElement().append(title.getElement());
-for (let i = 0; i < articlesCount; i++) {
-  articlesContainer.getElement().append(new Article().getElement());
-}
-header.setMenuHandler();
+  const appContainer = document.querySelector('#app');
+
+  const header = new Header();
+  appContainer.append(header.getElement());
+  header.setMenuHandler();
+
+  const featuredArtice = new Article(featuredArticleContent, 'featured');
+  appContainer.append(featuredArtice.getElement());
+
+  const articlesContainer = new Container('blog');
+  appContainer.append(articlesContainer.getElement());
+
+  const title = new Title();
+  articlesContainer.getElement().append(title.getElement());
+
+  for (let i = articlesContent.length - 1; i >= 0; i--) {
+    const article = new Article(articlesContent[i]);
+    articlesContainer.getElement().append(article.getElement());
+  }
+});
