@@ -43,6 +43,10 @@
     margin: 62px auto 25px;
   }
 }
+.article__link {
+  color: #000000;
+  text-decoration: none;
+}
 .article__img{
   @media (min-width: $screen_medium) {
     object-fit: cover;
