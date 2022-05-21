@@ -1,0 +1,23 @@
+.error{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.error__title{
+  margin: 0;
+  padding: 0;
+}
+.error__text{
+  margin: 0 0 25px;
+  padding: 0;
+  @include pageNameFontParams;
+}
+.error__link{
+  @include smallTitleFontParams;
+  text-decoration: underline;
+  &:hover{
+    color: rgba(#1C1C1C, 50%);
+  }
+}

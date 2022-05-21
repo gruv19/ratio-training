@@ -1,7 +1,8 @@
-import about from "./views/about";
-import article from "./views/article";
-import blog from "./views/blog";
-import home from "./views/home";
+import about from './views/about';
+import article from './views/article';
+import blog from './views/blog';
+import home from './views/home';
+import error from './views/error';
 
 const routes = [
   { path: '/blog/article/[a-zA-Z0-9]+', component: article },
@@ -31,9 +32,9 @@ const router = () => {
   const path = parseLocation();
   const component = getComponent(path);
   if (component) {
-    component();
+    component().catch((e) => error(`Что-то пошло не так...${e.code}`));
   } else {
-    throw new Error('HUY');
+    error('Такой страницы не существует');
   }
 };
 

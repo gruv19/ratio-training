@@ -7,31 +7,29 @@ import pagination from '../components/pagination/pagination';
 const article = async () => {
   const articleId = window.location.pathname.split('/')[3];
 
-  try {
-    const articleContent = await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleId}`)).json();
-    const nextArticle = (articleContent.nextId !== null) ? await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleContent.nextId}`)).json() : { id: -1, title: ''};
-    const prevArticle = (articleContent.prevId !== null) ? await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleContent.prevId}`)).json() : { id: -1, title: ''};
-
-    const appContainer = document.querySelector('#app');
-    appContainer.innerHTML = '';
-
-    setSEO(`nuntium. - ${articleContent.seo.title}`, articleContent.seo.description, articleContent.seo.keywords);
-
-    const headerElement = header();
-    appContainer.append(headerElement);
-
-    const contentContainer = container('article');
-    appContainer.append(contentContainer);
-
-    contentContainer.append(fullArticle(articleContent));
-
-    appContainer.append(pagination(prevArticle, nextArticle))
-  } catch (error) {
-    // Отправка на страницу ошибки
-    window.location.replace('/about')
+  const articleContent = await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleId}`)).json();
+  if (!articleContent) {
+    console.log('!!!!');
   }
 
+  const nextArticle = (articleContent.nextId !== null) ? await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleContent.nextId}`)).json() : { id: -1, title: ''};
+  const prevArticle = (articleContent.prevId !== null) ? await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleContent.prevId}`)).json() : { id: -1, title: ''};
 
+  const appContainer = document.querySelector('#app');
+  appContainer.innerHTML = '';
+
+  setSEO(`nuntium. - ${articleContent.seo.title}`, articleContent.seo.description, articleContent.seo.keywords);
+
+  const headerElement = header();
+  appContainer.append(headerElement);
+
+  const contentContainer = container('article');
+  appContainer.append(contentContainer);
+
+  const fullArticleElement = fullArticle(articleContent)
+  contentContainer.append(fullArticleElement);
+
+  appContainer.append(pagination(prevArticle, nextArticle))
 };
 
 export default article;
