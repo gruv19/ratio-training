@@ -1,5 +1,5 @@
 import header from '../common.blocks/header/header';
-import Container from '../library.blocks/container/container';
+import container from '../library.blocks/container/container';
 import fullArticle from '../common.blocks/full-article/full-article';
 import { setSEO } from '../utils';
 import pagination from '../common.blocks/pagination/pagination';
@@ -20,10 +20,10 @@ const article = async () => {
     const headerElement = header();
     appContainer.append(headerElement);
 
-    const contentContainer = new Container('article');
-    appContainer.append(contentContainer.getElement());
+    const contentContainer = container('article');
+    appContainer.append(contentContainer);
 
-    contentContainer.getElement().append(fullArticle(articleContent));
+    contentContainer.append(fullArticle(articleContent));
 
     appContainer.append(pagination(prevArticle, nextArticle))
   } catch (error) {

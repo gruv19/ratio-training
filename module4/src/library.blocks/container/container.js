@@ -1,20 +1,12 @@
 import './container.scss';
 import containerTemplate from './container.template';
 
-class Container {
-  constructor(type = 'default') {
-    this.element = null;
-    this.type = type;
-  }
+const container = (type) => {
+  const temporaryElement = document.createElement('div');
+  temporaryElement.innerHTML = containerTemplate(type);
+  const containerElement = temporaryElement.firstElementChild;
 
-  getElement() {
-    if (!this.element) {
-      const temporaryElement = document.createElement('div');
-      temporaryElement.innerHTML = containerTemplate(this.type);
-      this.element = temporaryElement.firstElementChild;
-    }
-    return this.element;
-  }
-}
+  return containerElement;
+};
 
-export default Container;
+export default container;

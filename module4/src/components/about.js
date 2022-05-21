@@ -1,7 +1,7 @@
 import header from '../common.blocks/header/header';
-import Container from '../library.blocks/container/container';
+import container from '../library.blocks/container/container';
 import pageName from '../library.blocks/page-name/page-name';
-import AboutContent from '../library.blocks/about-content/about-content';
+import aboutContent from '../library.blocks/about-content/about-content';
 import { setSEO } from '../utils';
 
 const about = async () => {
@@ -15,14 +15,14 @@ const about = async () => {
   const headerElement = header();
   appContainer.append(headerElement);
 
-  const pageContainer = new Container('about');
-  appContainer.append(pageContainer.getElement());
+  const pageContainer = container('about');
+  appContainer.append(pageContainer);
 
   const aboutPageName = pageName(data.title);
-  pageContainer.getElement().append(aboutPageName);
+  pageContainer.append(aboutPageName);
 
-  const aboutContent = new AboutContent(data.content);
-  pageContainer.getElement().append(aboutContent.getElement());
+  const aboutContentElement = aboutContent(data.content);
+  pageContainer.append(aboutContentElement);
 };
 
 export default about;
