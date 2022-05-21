@@ -1,20 +1,12 @@
 import './page-name.scss';
 import pageNameTemplate from './page-name.template';
 
-class PageName {
-  constructor(text = 'Page Name') {
-    this.element = null;
-    this.text = text;
-  }
+const pageName = (text = 'Page Name') => {
+  const temporaryElement = document.createElement('div');
+    temporaryElement.innerHTML = pageNameTemplate(this.text);
+    const pageNameElement = temporaryElement.firstElementChild;
 
-  getElement() {
-    if (!this.element) {
-      const temporaryElement = document.createElement('div');
-      temporaryElement.innerHTML = pageNameTemplate(this.text);
-      this.element = temporaryElement.firstElementChild;
-    }
-    return this.element;
-  }
+    return pageNameElement;
 }
 
-export default PageName;
+export default pageName;
