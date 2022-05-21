@@ -1,7 +1,7 @@
 import Header from '../common.blocks/header/header';
 import Container from '../library.blocks/container/container';
 import articleCard from '../common.blocks/article-card/article-card';
-import Title from '../library.blocks/title/title';
+import title from '../library.blocks/title/title';
 import { setSEO } from '../utils';
 
 const blog = async () => {
@@ -16,18 +16,18 @@ const blog = async () => {
   appContainer.append(header.getElement());
   header.setMenuHandler();
 
-  const featuredArtice = new Article(featuredArticleContent, 'featured');
-  appContainer.append(featuredArtice.getElement());
+  const featuredArticeCard = articleCard(featuredArticleContent, 'featured');
+  appContainer.append(featuredArticeCard);
 
   const articlesContainer = new Container('blog');
   appContainer.append(articlesContainer.getElement());
 
-  const title = new Title();
-  articlesContainer.getElement().append(title.getElement());
+  const pageTitle = title('Editor’s Picks');
+  articlesContainer.getElement().append(pageTitle);
 
   for (let i = articlesContent.length - 1; i >= 0; i--) {
-    const article = new Article(articlesContent[i]);
-    articlesContainer.getElement().append(article.getElement());
+    const defaultArticleCard = articleCard(articlesContent[i]);
+    articlesContainer.getElement().append(defaultArticleCard);
   }
 };
 

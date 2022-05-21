@@ -1,7 +1,7 @@
 import Header from '../common.blocks/header/header';
 import Container from '../library.blocks/container/container';
 import articleCard from '../common.blocks/article-card/article-card';
-import Title from '../library.blocks/title/title';
+import title from '../library.blocks/title/title';
 import { setSEO } from '../utils';
 
 const home = async () => {
@@ -24,8 +24,8 @@ const home = async () => {
   const articlesContainer = new Container();
   appContainer.append(articlesContainer.getElement());
 
-  const title = new Title();
-  articlesContainer.getElement().append(title.getElement());
+  const pageTitle = title('Editor’s Picks');
+  articlesContainer.getElement().append(pageTitle);
 
   for (let i = articlesContent.length - 1; i >= articlesContent.length - articlesCount; i--) {
     const defaultArticleCard = articleCard(articlesContent[i]);

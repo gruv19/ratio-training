@@ -1,19 +1,12 @@
 import './title.scss';
 import titleTemplate from './title.template';
 
-class Title {
-  constructor() {
-    this.element = null;
-  }
+const title = (text) => {
+  const temporaryElement = document.createElement('div');
+  temporaryElement.innerHTML = titleTemplate(text);
+  const titleElement = temporaryElement.firstElementChild;
 
-  getElement() {
-    if (!this.element) {
-      const temporaryElement = document.createElement('div');
-      temporaryElement.innerHTML = titleTemplate();
-      this.element = temporaryElement.firstElementChild;
-    }
-    return this.element;
-  }
-}
+  return titleElement;
+};
 
-export default Title;
+export default title;
