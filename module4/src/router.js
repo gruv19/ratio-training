@@ -1,7 +1,7 @@
-import about from "./components/about";
-import article from "./components/article";
-import blog from "./components/blog";
-import home from "./components/home";
+import about from "./views/about";
+import article from "./views/article";
+import blog from "./views/blog";
+import home from "./views/home";
 
 const routes = [
   { path: '/blog/article/[a-zA-Z0-9]+', component: article },

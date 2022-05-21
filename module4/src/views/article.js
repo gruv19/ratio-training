@@ -1,8 +1,8 @@
-import header from '../common.blocks/header/header';
-import container from '../library.blocks/container/container';
-import fullArticle from '../common.blocks/full-article/full-article';
+import header from '../components/header/header';
+import container from '../components/container/container';
+import fullArticle from '../components/full-article/full-article';
 import { setSEO } from '../utils';
-import pagination from '../common.blocks/pagination/pagination';
+import pagination from '../components/pagination/pagination';
 
 const article = async () => {
   const articleId = window.location.pathname.split('/')[3];

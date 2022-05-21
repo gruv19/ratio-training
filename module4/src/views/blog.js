@@ -1,7 +1,7 @@
-import header from '../common.blocks/header/header';
-import container from '../library.blocks/container/container';
-import articleCard from '../common.blocks/article-card/article-card';
-import title from '../library.blocks/title/title';
+import header from '../components/header/header';
+import container from '../components/container/container';
+import articleCard from '../components/article-card/article-card';
+import title from '../components/title/title';
 import { setSEO } from '../utils';
 
 const blog = async () => {

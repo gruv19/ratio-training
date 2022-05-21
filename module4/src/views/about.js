@@ -1,7 +1,7 @@
-import header from '../common.blocks/header/header';
-import container from '../library.blocks/container/container';
-import pageName from '../library.blocks/page-name/page-name';
-import aboutContent from '../library.blocks/about-content/about-content';
+import header from '../components/header/header';
+import container from '../components/container/container';
+import pageName from '../components/page-name/page-name';
+import aboutContent from '../components/about-content/about-content';
 import { setSEO } from '../utils';
 
 const about = async () => {

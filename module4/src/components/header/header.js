@@ -1,9 +1,9 @@
 import './header.scss';
 import headerTemplate from './header.template';
 
-import logo from '../../library.blocks/logo/logo';
-import burgerButton from '../../library.blocks/burger-button/burger-button';
-import nav from '../../library.blocks/nav/nav';
+import logo from '../logo/logo';
+import burgerButton from '../burger-button/burger-button';
+import nav from '../nav/nav';
 
 const header = () => {
   const temporaryElement = document.createElement('div');

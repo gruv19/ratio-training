@@ -1,6 +1,4 @@
 const paginationTemplate = (prevArticle, nextArticle) => {
-  console.log(prevArticle);
-  console.log(nextArticle);
   const { id: prevId = -1, title: prevTitle = '' } = prevArticle;
   const { id: nextId = -1, title: nextTitle = '' } = nextArticle;
 
