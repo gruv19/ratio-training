@@ -1,6 +1,6 @@
 import Header from '../common.blocks/header/header';
 import Container from '../library.blocks/container/container';
-import Article from '../common.blocks/article/article';
+import articleCard from '../common.blocks/article-card/article-card';
 import Title from '../library.blocks/title/title';
 import { setSEO } from '../utils';
 
@@ -18,8 +18,8 @@ const home = async () => {
   appContainer.append(header.getElement());
   header.setMenuHandler();
 
-  const featuredArticle = new Article(featuredArticleContent, 'featured');
-  appContainer.append(featuredArticle.getElement());
+  const featuredArticleCard = articleCard(featuredArticleContent, 'featured');
+  appContainer.append(featuredArticleCard);
 
   const articlesContainer = new Container();
   appContainer.append(articlesContainer.getElement());
@@ -28,12 +28,12 @@ const home = async () => {
   articlesContainer.getElement().append(title.getElement());
 
   for (let i = articlesContent.length - 1; i >= articlesContent.length - articlesCount; i--) {
-    const article = new Article(articlesContent[i]);
-    articlesContainer.getElement().append(article.getElement());
+    const defaultArticleCard = articleCard(articlesContent[i]);
+    articlesContainer.getElement().append(defaultArticleCard);
   }
 
-  const bannerArtice = new Article(articlesContent[articlesContent.length - articlesCount - 1], 'banner');
-  appContainer.append(bannerArtice.getElement());
+  const bannerArticleCard = articleCard(articlesContent[articlesContent.length - articlesCount - 1], 'banner');
+  appContainer.append(bannerArticleCard);
 };
 
 export default home;

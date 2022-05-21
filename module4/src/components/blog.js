@@ -1,6 +1,6 @@
 import Header from '../common.blocks/header/header';
 import Container from '../library.blocks/container/container';
-import Article from '../common.blocks/article/article';
+import articleCard from '../common.blocks/article-card/article-card';
 import Title from '../library.blocks/title/title';
 import { setSEO } from '../utils';
 

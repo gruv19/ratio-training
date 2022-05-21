@@ -1,4 +1,4 @@
-.article{
+.article-card{
   margin: 0 auto;
   @media (min-width: $screen_medium) {
     display: grid;
@@ -10,13 +10,13 @@
     grid-column-gap: 55px;
   }
 }
-.article + .article {
+.article-card + .article-card {
   margin-top: 25px;
   @media (min-width: $screen_max) {
     margin-top: 50px;
   }
 }
-.article--featured {
+.article-card--featured {
   padding: 0 25px;
   position: relative;
   margin: 0px auto 50px;
@@ -30,8 +30,8 @@
     margin: 0 auto 50px;
   }
 }
-.article--banner{
-  @extend .article--featured;
+.article-card--banner{
+  @extend .article-card--featured;
   margin: 25px auto;
   @media (min-width: $screen_medium) {
     display: block;
@@ -43,17 +43,17 @@
     margin: 62px auto 25px;
   }
 }
-.article__link {
+.article-card__link {
   color: #000000;
   text-decoration: none;
 }
-.article__img{
+.article-card__img{
   @media (min-width: $screen_medium) {
     object-fit: cover;
     height: 100%;
   }
 }
-.article--featured .article__img{
+.article-card--featured .article-card__img{
   display: none;
   @media (min-width: $screen_medium) {
     object-fit: unset;
@@ -61,7 +61,7 @@
     display: block;
   }
 }
-.article--featured .article__content{
+.article-card--featured .article-card__content{
   @media (min-width: $screen_medium) {
     position: absolute;
     background-color: #FFFFFF;
@@ -74,31 +74,31 @@
     padding: 76px 40px 96px 39px;
   }
 }
-.article--banner .article__content{
+.article-card--banner .article-card__content{
   @media (min-width: $screen_max) {
     top: 54px;
     left: unset;
     right: 103px;
   }
 }
-.article__tag{
+.article-card__tag{
   @include tagFontParams;
   padding: 0;
   margin: 0 0 8px;
 }
-.article__title{
+.article-card__title{
   @include smallTitleFontParams;
   padding: 0;
   margin: 0 0 8px;
 }
-.article__meta{
+.article-card__meta{
   @include metaFontParams;
   display: flex;
   align-items: center;
   padding: 0;
   margin: 0 0 8px;
 }
-.article__divider{
+.article-card__divider{
   width: 3px;
   height: 3px;
   background-color: rgba(#1C1C1C, 0.5);
@@ -106,7 +106,7 @@
   display: inline-block;
   margin: 0 8px;
 }
-.article__text{
+.article-card__text{
   @include textFontParams;
   padding: 0;
   margin: 0;
