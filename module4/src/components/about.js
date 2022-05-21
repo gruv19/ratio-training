@@ -1,4 +1,4 @@
-import Header from '../common.blocks/header/header';
+import header from '../common.blocks/header/header';
 import Container from '../library.blocks/container/container';
 import pageName from '../library.blocks/page-name/page-name';
 import AboutContent from '../library.blocks/about-content/about-content';
@@ -12,9 +12,8 @@ const about = async () => {
   const appContainer = document.querySelector('#app');
   appContainer.innerHTML = '';
 
-  const header = new Header();
-  appContainer.append(header.getElement());
-  header.setMenuHandler();
+  const headerElement = header();
+  appContainer.append(headerElement);
 
   const pageContainer = new Container('about');
   appContainer.append(pageContainer.getElement());

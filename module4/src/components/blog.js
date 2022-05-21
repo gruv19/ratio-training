@@ -1,4 +1,4 @@
-import Header from '../common.blocks/header/header';
+import header from '../common.blocks/header/header';
 import Container from '../library.blocks/container/container';
 import articleCard from '../common.blocks/article-card/article-card';
 import title from '../library.blocks/title/title';
@@ -12,9 +12,8 @@ const blog = async () => {
 
   const appContainer = document.querySelector('#app');
 
-  const header = new Header();
-  appContainer.append(header.getElement());
-  header.setMenuHandler();
+  const headerElement = header();
+  appContainer.append(headerElement);
 
   const featuredArticeCard = articleCard(featuredArticleContent, 'featured');
   appContainer.append(featuredArticeCard);

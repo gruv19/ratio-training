@@ -3,7 +3,7 @@ import pageNameTemplate from './page-name.template';
 
 const pageName = (text = 'Page Name') => {
   const temporaryElement = document.createElement('div');
-    temporaryElement.innerHTML = pageNameTemplate(this.text);
+    temporaryElement.innerHTML = pageNameTemplate(text);
     const pageNameElement = temporaryElement.firstElementChild;
 
     return pageNameElement;

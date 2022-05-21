@@ -1,4 +1,4 @@
-import Header from '../common.blocks/header/header';
+import header from '../common.blocks/header/header';
 import Container from '../library.blocks/container/container';
 import fullArticle from '../common.blocks/full-article/full-article';
 import { setSEO } from '../utils';
@@ -17,8 +17,8 @@ const article = async () => {
 
     setSEO(`nuntium. - ${articleContent.seo.title}`, articleContent.seo.description, articleContent.seo.keywords);
 
-    const header = new Header();
-    appContainer.append(header.getElement());
+    const headerElement = header();
+    appContainer.append(headerElement);
 
     const contentContainer = new Container('article');
     appContainer.append(contentContainer.getElement());
