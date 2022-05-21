@@ -1,0 +1,72 @@
+.author{
+  max-width: 500px;
+  margin: 0 auto;
+  @media (min-width: $screen_medium) {
+  }
+  @media (min-width: $screen_max) {
+    max-width: 655px;
+  }
+}
+.author__title{
+  @include tagFontParams;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 28px;
+  @media (min-width: $screen_medium) {
+    margin-bottom: 25px;
+  }
+  @media (min-width: $screen_max) {
+    margin-bottom: 15px;
+  }
+}
+.author__card{
+  display: grid;
+  grid-template-columns: 82px calc(100% - (82px + 24px));
+  grid-column-gap: 24px;
+  grid-row-gap: 28px;
+  align-items: center;
+  @media (min-width: $screen_medium) {
+    grid-template-columns: 160px calc(100% - (160px + 15px));
+    grid-column-gap: 15px;
+    grid-row-gap: 8px;
+    align-items: unset;
+  }
+  @media (min-width: $screen_max) {
+    grid-template-columns: 160px calc(100% - (160px + 37px));
+    grid-column-gap: 37px;
+    grid-row-gap: 13px;
+  }
+}
+.author__photo{
+  max-width: 82px;
+  border-radius: 50%;
+  @media (min-width: $screen_medium) {
+    max-width: 160px;
+    grid-row: 1/3;
+  }
+}
+.author__main-info{
+  @media (min-width: $screen_medium) {
+    align-self: center;
+  }
+  @media (min-width: $screen_max) {
+    align-self: start;
+  }
+}
+.author__name{
+  @include pageNameFontParams;
+}
+.author__link{
+  display: none;
+  @media (min-width: $screen_max) {
+    display: block;
+    @include metaFontParams;
+  }
+}
+.author__about{
+  @include textFontParams;
+  grid-column: 1/3;
+  @media (min-width: $screen_medium) {
+    grid-column: 2/3;
+  }
+}

@@ -20,7 +20,7 @@ const article = async () => {
     const header = new Header();
     appContainer.append(header.getElement());
 
-    const contentContainer = new Container('blog');
+    const contentContainer = new Container('article');
     appContainer.append(contentContainer.getElement());
 
     contentContainer.getElement().append(fullArticle(articleContent));

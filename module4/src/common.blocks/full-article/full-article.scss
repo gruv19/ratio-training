@@ -1,0 +1,63 @@
+.full-article__title{
+  margin: 28px 0 19px;
+  text-align: center;
+  @include pageNameFontParams;
+  @media (min-width: $screen_medium) {
+    max-width: 672px;
+    margin: 25px auto 8px;
+  }
+  @media (min-width: $screen_max) {
+    max-width: 790px;
+    margin: 58px auto 13px;
+  }
+}
+.full-article__meta{
+  display: none;
+  @media (min-width: $screen_medium) {
+    @include metaFontParams;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.full-article__divider{
+  width: 3px;
+  height: 3px;
+  background-color: rgba(#1C1C1C, 0.5);
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 8px;
+}
+.full-article__tag{
+  display: none;
+  @include metaFontParams;
+  @media (min-width: $screen_medium) {
+    display: block;
+    text-align: center;
+    margin: 8px 0;
+  }
+  @media (min-width: $screen_max) {
+    margin: 13px 0 26px;
+  }
+}
+.full-article__content{
+  @include textFontParams;
+  margin-bottom: 25px;
+  @media (min-width: $screen_medium) {
+    max-width: 592px;
+    margin: 0 auto 20px;
+  }
+  @media (min-width: $screen_max) {
+    max-width: 652px;
+    margin: 0 auto 90px;
+  }
+}
+.full-article__content>p{
+  margin: 24px 0;
+}
+.full-article__content>p:first-child{
+  margin-top: 0;
+}
+.full-article__content>p:last-child{
+  margin-bottom: 0;
+}
