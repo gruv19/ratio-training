@@ -1,7 +1,8 @@
 import { resolve } from 'path';
 
-const root = resolve(__dirname, 'src', 'pages');
-const outDir = resolve(__dirname, 'dist');
+// const root = resolve(__dirname, 'src', 'pages');
+const root = resolve(__dirname, 'src');
+// const outDir = resolve(__dirname, 'dist');
 
 export default {
   root,
@@ -9,17 +10,17 @@ export default {
     port: 4040,
     host: '0.0.0.0'
   },
-  build: {
-    outDir,
-    emptyOutDir: true,
-    rollupOptions: {
-      input: {
-        main: resolve(root, 'index.html'),
-        about: resolve(root, 'about.html'),
-        blog: resolve(root, 'blog.html'),
-      },
-    },
-  },
+  // build: {
+  //   outDir,
+  //   emptyOutDir: true,
+  //   rollupOptions: {
+  //     input: {
+  //       main: resolve(root, 'index.html'),
+  //       about: resolve(root, 'about.html'),
+  //       blog: resolve(root, 'blog.html'),
+  //     },
+  //   },
+  // },
   css: {
     preprocessorOptions: {
       scss: {

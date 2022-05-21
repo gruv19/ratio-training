@@ -1,12 +1,10 @@
-import '../../style/font.scss';
-import '../../style/global.scss';
-import Header from '../../common.blocks/header/header';
-import Container from '../../library.blocks/container/container';
-import Article from '../../common.blocks/article/article';
-import Title from '../../library.blocks/title/title';
-import { setSEO } from '../../utils';
+import Header from '../common.blocks/header/header';
+import Container from '../library.blocks/container/container';
+import Article from '../common.blocks/article/article';
+import Title from '../library.blocks/title/title';
+import { setSEO } from '../utils';
 
-document.addEventListener('DOMContentLoaded', async () => {
+const home = async () => {
   setSEO('nuntium. - home');
 
   const featuredArticleContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/featured/')).json();
@@ -14,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const articlesCount = 3;
 
   const appContainer = document.querySelector('#app');
+  appContainer.innerHTML = '';
 
   const header = new Header();
   appContainer.append(header.getElement());
@@ -35,9 +34,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const bannerArtice = new Article(articlesContent[articlesContent.length - articlesCount - 1], 'banner');
   appContainer.append(bannerArtice.getElement());
-});
+};
 
-window.addEventListener('hashchange', (e) => {
-  e.preventDefault();
-  console.log('ssssss');
-});
+export default home;

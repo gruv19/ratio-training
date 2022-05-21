@@ -1,12 +1,10 @@
-import '../../style/font.scss';
-import '../../style/global.scss';
-import Header from '../../common.blocks/header/header';
-import Container from '../../library.blocks/container/container';
-import Article from '../../common.blocks/article/article';
-import Title from '../../library.blocks/title/title';
-import { setSEO } from '../../utils';
+import Header from '../common.blocks/header/header';
+import Container from '../library.blocks/container/container';
+import Article from '../common.blocks/article/article';
+import Title from '../library.blocks/title/title';
+import { setSEO } from '../utils';
 
-document.addEventListener('DOMContentLoaded', async () => {
+const blog = async () => {
   setSEO('nuntium. - blog');
 
   const featuredArticleContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/featured/')).json();
@@ -31,4 +29,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const article = new Article(articlesContent[i]);
     articlesContainer.getElement().append(article.getElement());
   }
-});
+};
+
+export default blog;
