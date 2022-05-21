@@ -2,10 +2,11 @@ import header from '../components/header/header';
 import container from '../components/container/container';
 import articleCard from '../components/article-card/article-card';
 import title from '../components/title/title';
-import { setSEO } from '../utils';
+import { setSEO, renderArticles } from '../utils';
 
 const blog = async () => {
   setSEO('nuntium. - blog');
+  const loadArticlesCount = 4;
 
   const featuredArticleContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/featured/')).json();
   const articlesContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/articles/')).json();
@@ -24,10 +25,19 @@ const blog = async () => {
   const pageTitle = title('Editor’s Picks');
   articlesContainer.append(pageTitle);
 
-  for (let i = articlesContent.length - 1; i >= 0; i--) {
-    const defaultArticleCard = articleCard(articlesContent[i]);
-    articlesContainer.append(defaultArticleCard);
-  }
+  let startArticle = articlesContent.length - 1;
+  let endArticle = (startArticle - loadArticlesCount + 1 < 0) ? 0 : startArticle - loadArticlesCount + 1;
+  renderArticles(startArticle, endArticle, articlesContainer, articleCard, articlesContent);
+
+  document.addEventListener('scroll', () => {
+    let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+
+    if (windowRelativeBottom < document.documentElement.clientHeight + 100) {
+      startArticle = endArticle - 1;
+      endArticle = (startArticle - loadArticlesCount + 1 < 0) ? 0 : startArticle - loadArticlesCount + 1;
+      renderArticles(startArticle, endArticle, articlesContainer, articleCard, articlesContent);
+    }
+  });
 };
 
 export default blog;
