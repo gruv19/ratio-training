@@ -22,9 +22,12 @@ const renderArticles = (from, to, renderContainer, renderHandler, articleContent
   }
 }
 
+const base = (import.meta.env.MODE === 'development') ? '/' : '/nuntium-ratio/';
+
 export {
   setSEO,
   formatDate,
   formatReadTime,
   renderArticles,
+  base,
 };

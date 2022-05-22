@@ -14,16 +14,11 @@ const routes = [
 
 const parseLocation = () => {
   let currentPath = window.location.pathname;
-  if (currentPath[currentPath.length - 1] === '/') {
-    currentPath = currentPath.substring(0, currentPath.length - 1);
+  if (currentPath === base || currentPath === `${base}index.html`) {
+    history.pushState(null, null, base);
+    return base;
   }
-  if (currentPath !== `${base}index.html`) {
-    currentPath = currentPath.replace(/[^a-zA-Z0-9/]/g, '');
-  } else {
-    currentPath = base;
-    history.pushState(null, null, currentPath);
-  }
-  return currentPath.length ? currentPath : base;
+  return `${base}${currentPath.replace(base, '').replace(/[^a-zA-Z0-9/]/g, '')}`;
 }
 
 const getComponent = (path) => {
@@ -35,11 +30,8 @@ const getComponent = (path) => {
 };
 
 const router = () => {
-  console.log(import.meta.env);
   const path = parseLocation();
   const component = getComponent(path);
-  console.log(path);
-  console.log(component);
   if (component) {
     component().catch((e) => error(`Что-то пошло не так...`));
   } else {
