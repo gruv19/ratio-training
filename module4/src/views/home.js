@@ -33,6 +33,7 @@ const home = async () => {
 
   const bannerArticleCard = articleCard(articlesContent[articlesContent.length - articlesCount - 1], 'banner');
   appContainer.append(bannerArticleCard);
+
 };
 
 export default home;

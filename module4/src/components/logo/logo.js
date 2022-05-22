@@ -1,9 +1,10 @@
 import './logo.scss';
 import imageSrc from './logo.png';
+import { base } from '../../utils';
 
 const logo = () => {
   let logoElement = null;
-  if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+  if (window.location.pathname === base || window.location.pathname === `${base}index.html`) {
     logoElement = new Image();
     logoElement.src = imageSrc;
     logoElement.classList.add('logo');
@@ -14,7 +15,7 @@ const logo = () => {
 
     logoElement = document.createElement('a');
     logoElement.classList.add('logo');
-    logoElement.setAttribute('href', '/');
+    logoElement.setAttribute('href', base);
     logoElement.append(logoImage);
   }
 

@@ -5,12 +5,10 @@ import { setSEO } from '../utils';
 import pagination from '../components/pagination/pagination';
 
 const article = async () => {
-  const articleId = window.location.pathname.split('/')[3];
+  const pathArray = window.location.pathname.split('/');
+  const articleId = pathArray[pathArray.length - 1];
 
   const articleContent = await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleId}`)).json();
-  if (!articleContent) {
-    console.log('!!!!');
-  }
 
   const nextArticle = (articleContent.nextId !== null) ? await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleContent.nextId}`)).json() : { id: -1, title: ''};
   const prevArticle = (articleContent.prevId !== null) ? await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleContent.prevId}`)).json() : { id: -1, title: ''};
