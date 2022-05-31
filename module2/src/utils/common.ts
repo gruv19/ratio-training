@@ -2,11 +2,11 @@ function randomNumber(min: number, max: number): number {
   return Math.floor( Math.random() * (max + 1 - min) + min );
 }
 
-function removeElementFromArray(elementIdx: number, array: any) {
+function removeElementFromArray(elementIdx: number, array: any): void {
   array.splice(elementIdx, 1);
 }
 
-function timeNormalize(time: number) {
+function timeNormalize(time: number): string {
   const msec: number = time % 10;
   time = Math.trunc(time / 10);
   const seconds: number = time % 60;

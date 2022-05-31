@@ -1,6 +1,6 @@
 import { cellInitParams } from '../const';
 
-function defineInitParams() {
+function defineInitParams(): void {
   if (window.innerWidth < 767) {
     cellInitParams.SIZE = 44;
     cellInitParams.GAP = 10;
