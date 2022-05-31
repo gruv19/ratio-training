@@ -4,6 +4,8 @@ import { mapCoordinates, startValues, game, boardInitParams } from '../../const'
 import { randomNumber, removeElementFromArray } from '../../utils/common';
 import {
     setKeyDownHandler,
+    setMouseMoveHandler,
+    setTouchHandler,
     getLeftBottomIndex,
     getLeftTopIndex,
     getTopLeftIndex,
@@ -62,6 +64,8 @@ class Board {
     this.addCell();
     this.addCell();
     setKeyDownHandler(this.leftMove, this.upMove, this.rightMove, this.downMove, this);
+    setMouseMoveHandler(this.leftMove, this.upMove, this.rightMove, this.downMove, this);
+    setTouchHandler(this.leftMove, this.upMove, this.rightMove, this.downMove, this);
   }
 
   unionCells(movedCell: Cell, placedCell: Cell) {
@@ -345,10 +349,7 @@ class Board {
     this.game.getStatistic().setScoreGameStatistic(this.game.getUsername(), this.game.getScoreCounter().getCount());
     this.game.setInProgress(false);
     this.game.getTimeCounter().stop();
-    const answer = confirm('Игра окончена! Начать заново?');
-    if (answer) {
-      this.game.reset();
-    }
+    this.game.finishedGame();
   }
 
   checkGoal() {

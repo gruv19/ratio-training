@@ -9,8 +9,7 @@ import {
 } from '../../utils/templates';
 import {
   setPlayPauseHandler,
-  setResetGameHandler,
-  setSaveUsernameHandler
+  setResetGameHandler
 } from '../../utils/game';
 import { game } from '../../const';
 import TimeCounter from '../timeCounter/timeCounter';
@@ -45,9 +44,13 @@ class Game {
     this.boardComponent.init();
     this.timeCounter.init();
     this.scoreCounter.init();
-    setSaveUsernameHandler(this.setUsername, this);
     this.statistic.getTimeGameStatistic();
     this.statistic.getScoreGameStatistic();
+
+    this.getMainElement().querySelector('.game__menu').innerHTML = '';
+    this.getMainElement().querySelector('.game__menu').insertAdjacentHTML('beforeend', createMenuTemplate(this.username));
+    setPlayPauseHandler(this.playPauseHandler, this);
+    setResetGameHandler(this.reset, this);
   }
 
   getBoardComponent() {
@@ -99,17 +102,8 @@ class Game {
     return this.inProgress;
   }
 
-  setUsername(event: any) {
-    event.preventDefault();
-    if (!this.getUsernameInput().value) {
-      alert('Поле "Имя игрока" не должно быть пустым');
-      return;
-    }
-    this.username = this.getUsernameInput().value;
-    this.getMainElement().querySelector('.game__menu').innerHTML = '';
-    this.getMainElement().querySelector('.game__menu').insertAdjacentHTML('beforeend', createMenuTemplate(this.username));
-    setPlayPauseHandler(this.playPauseHandler, this);
-    setResetGameHandler(this.reset, this);
+  setUsername() {
+    this.username = prompt(`Ты набрал ${game.GOAL}. Введи свое имя, чтобы сохранить результат!`) || '';
   }
 
   endTimeGame() {
@@ -123,6 +117,9 @@ class Game {
     if (gameOverFlag !== 0) {
       this.inProgress = false;
       this.timeCounter.stop();
+
+      this.setUsername();
+
       this.statistic.setTimeGameStatistic(this.username, this.timeCounter.getCount());
       this.continueGame();
       return;
@@ -138,8 +135,15 @@ class Game {
   }
 
   continueGame() {
-    const answer = confirm(`${this.username}, ты набрал ${game.GOAL}. Продолжить игру?`);
+    const answer = confirm('Твой результат сохранен! Продолжить игру?');
     if (!answer) {
+      this.reset();
+    }
+  }
+
+  finishedGame() {
+    const answer = confirm(`Ходов больше нет! Ты набрал ${this.getScoreCounter().getCount()}! Начать заново?`);
+    if (answer) {
       this.reset();
     }
   }
@@ -153,6 +157,7 @@ class Game {
     this.playPauseFlag = false;
     this.inProgress = true;
     this.statistic.reset();
+    this.username = '';
     if (this.boardComponent) {
       this.boardComponent.reset();
     }
@@ -163,10 +168,6 @@ class Game {
   }
 
   playPauseHandler() {
-    if (!this.username) {
-      alert('Необходимо ввести имя игрока');
-      return;
-    }
     if (this.inProgress === false) {
       return;
     }
