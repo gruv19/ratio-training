@@ -115,7 +115,6 @@ class Statistic {
           <div class="statistic__cell-result">${item.score}</div>
         </div>`
       });
-    console.log(this.scoreStatistic);
     this.getScoreStatisticElement().insertAdjacentHTML('beforeend', statisticHTML);
   }
 
