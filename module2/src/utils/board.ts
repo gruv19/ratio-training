@@ -3,7 +3,7 @@ import Cell from "../components/cell/cell";
 import { boardInitParams } from '../const';
 
 function setKeyDownHandler(leftKeyHandler: Function, upKeyHandler: Function, rightKeyHandler: Function, downKeyHandler: Function, thisArg: Board): void {
-  document.addEventListener('keydown', (event) => {
+  document.addEventListener('keydown', (event: KeyboardEvent) => {
     if (event.keyCode === 37) {
       event.preventDefault();
       leftKeyHandler.apply(thisArg);
@@ -26,14 +26,14 @@ function setMouseMoveHandler(leftKeyHandler: Function, upKeyHandler: Function, r
   const mouseDownPosition: { x: number, y: number } = { x: 0, y: 0 };
   const mouseUpPosition: { x: number, y: number } = { x: 0, y: 0 };
 
-  document.addEventListener('mousedown', (e) => {
-    mouseDownPosition.x = e.x;
-    mouseDownPosition.y = e.y;
+  document.addEventListener('mousedown', (event: MouseEvent) => {
+    mouseDownPosition.x = event.x;
+    mouseDownPosition.y = event.y;
   });
 
-  document.addEventListener('mouseup', (e) => {
-    mouseUpPosition.x = e.x;
-    mouseUpPosition.y = e.y;
+  document.addEventListener('mouseup', (event: MouseEvent) => {
+    mouseUpPosition.x = event.x;
+    mouseUpPosition.y = event.y;
     let diffX: number = Math.abs(mouseUpPosition.x - mouseDownPosition.x);
     let diffY: number = Math.abs(mouseUpPosition.y - mouseDownPosition.y);
 
@@ -62,14 +62,15 @@ function setTouchHandler(leftKeyHandler: Function, upKeyHandler: Function, right
   const touchStartPosition: { x: number, y: number } = { x: 0, y: 0 };
   const touchEndPosition: { x: number, y: number } = { x: 0, y: 0 };
 
-  document.addEventListener('touchstart', (e) => {
-    touchStartPosition.x = e.changedTouches[0].clientX;
-    touchStartPosition.y = e.changedTouches[0].clientY;
+  thisArg.getElement().addEventListener('touchstart', (event: TouchEvent) => {
+    event.preventDefault();
+    touchStartPosition.x = event.changedTouches[0].clientX;
+    touchStartPosition.y = event.changedTouches[0].clientY;
   });
 
-  document.addEventListener('touchend', (e) => {
-    touchEndPosition.x = e.changedTouches[0].clientX;
-    touchEndPosition.y = e.changedTouches[0].clientY;
+  thisArg.getElement().addEventListener('touchend', (event: TouchEvent) => {
+    touchEndPosition.x = event.changedTouches[0].clientX;
+    touchEndPosition.y = event.changedTouches[0].clientY;
     let diffX: number = Math.abs(touchEndPosition.x - touchStartPosition.x);
     let diffY: number = Math.abs(touchEndPosition.y - touchStartPosition.y);
 
