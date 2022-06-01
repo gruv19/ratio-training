@@ -35,15 +35,15 @@ class Board {
     return this.element;
   }
 
-  getGameUsername() {
-    return this.game.getUsername();
+  init() {
+    this.addCell();
+    this.addCell();
+    setKeyDownHandler(this.leftMove, this.upMove, this.rightMove, this.downMove, this);
+    setMouseMoveHandler(this.leftMove, this.upMove, this.rightMove, this.downMove, this);
+    setTouchHandler(this.leftMove, this.upMove, this.rightMove, this.downMove, this);
   }
 
-  getGameUsernameInput() {
-    return this.game.getUsernameInput();
-  }
-
-  addCell() {
+  private addCell() {
     if (this.cells.length < boardInitParams.SIZE ** 2) {
       const value: number = startValues[randomNumber(0, startValues.length - 1)];
       const coordinatesIdx = randomNumber(0, mapCoordinates.length - 1);
@@ -60,20 +60,12 @@ class Board {
     }
   }
 
-  init() {
-    this.addCell();
-    this.addCell();
-    setKeyDownHandler(this.leftMove, this.upMove, this.rightMove, this.downMove, this);
-    setMouseMoveHandler(this.leftMove, this.upMove, this.rightMove, this.downMove, this);
-    setTouchHandler(this.leftMove, this.upMove, this.rightMove, this.downMove, this);
-  }
-
-  unionCells(movedCell: Cell, placedCell: Cell) {
+  private unionCells(movedCell: Cell, placedCell: Cell) {
     const startCoordinates: { x: number, y: number } = { x: movedCell.getX(), y: movedCell.getY() };
     const idx = this.cells.findIndex(item => item.getX() === startCoordinates.x && item.getY() === startCoordinates.y);
     mapCoordinates.push(JSON.stringify(startCoordinates));
-    movedCell.getElement().style.zIndex = '10';
-    placedCell.getElement().style.zIndex = '100';
+    movedCell.toBackground();
+    placedCell.toForeground();
     movedCell.updatePosition(placedCell.getX(), placedCell.getY());
     placedCell.updateValue();
     this.game.getScoreCounter().setPoints(placedCell.getValue());
@@ -85,7 +77,7 @@ class Board {
     this.cells.splice(idx, 1);
   }
 
-  leftMove() {
+  private leftMove() {
     let startY: number = 0;
     const coordinates: Array<string> = [...mapCoordinates];
     while (startY < boardInitParams.SIZE) {
@@ -109,17 +101,10 @@ class Board {
         this.addCell();
       }, boardInitParams.ANIMATION_DELAY);
     }
-    if (this.game.getTimeCounter().countIsZero()) {
-      this.game.playPauseHandler();
-      return;
-    }
-    if (!this.game.getPlayPauseFlag()) {
-      this.game.playPauseHandler();
-      return;
-    }
+    this.game.togglePlayPause();
   }
 
-  moveRowLeft(row: Array<Cell>) {
+  private moveRowLeft(row: Array<Cell>) {
     let unionFlag: boolean = true;
     let i: number = row.length - 2;
     while (i > -1) {
@@ -145,7 +130,7 @@ class Board {
     }
   }
 
-  upMove() {
+  private upMove() {
     let startX: number = 0;
     const coordinates: Array<string> = [...mapCoordinates];
     while (startX < boardInitParams.SIZE) {
@@ -169,17 +154,10 @@ class Board {
         this.addCell();
       }, boardInitParams.ANIMATION_DELAY);
     }
-    if (this.game.getTimeCounter().countIsZero()) {
-      this.game.playPauseHandler();
-      return;
-    }
-    if (!this.game.getPlayPauseFlag()) {
-      this.game.playPauseHandler();
-      return;
-    }
+    this.game.togglePlayPause();
   }
 
-  moveRowUp(row: Array<Cell>) {
+  private moveRowUp(row: Array<Cell>) {
     let unionFlag: boolean = true;
     let i: number = row.length - 2;
     while (i > -1) {
@@ -205,7 +183,7 @@ class Board {
     }
   }
 
-  rightMove() {
+  private rightMove() {
     let startY: number = 0;
     const coordinates: Array<string> = [...mapCoordinates];
     while (startY < boardInitParams.SIZE) {
@@ -229,17 +207,10 @@ class Board {
         this.addCell();
       }, boardInitParams.ANIMATION_DELAY);
     }
-    if (this.game.getTimeCounter().countIsZero()) {
-      this.game.playPauseHandler();
-      return;
-    }
-    if (!this.game.getPlayPauseFlag()) {
-      this.game.playPauseHandler();
-      return;
-    }
+    this.game.togglePlayPause();
   }
 
-  moveRowRight(row: Array<Cell>) {
+  private moveRowRight(row: Array<Cell>) {
     let unionFlag: boolean = true;
     let i: number = row.length - 2;
     while (i > -1) {
@@ -265,7 +236,7 @@ class Board {
     }
   }
 
-  downMove() {
+  private downMove() {
     let startX: number = 0;
     const coordinates: Array<string> = [...mapCoordinates];
     while (startX < boardInitParams.SIZE) {
@@ -289,17 +260,10 @@ class Board {
         this.addCell();
       }, boardInitParams.ANIMATION_DELAY);
     }
-    if (this.game.getTimeCounter().getCount() === 0) {
-        this.game.playPauseHandler();
-      return;
-    }
-    if (!this.game.getPlayPauseFlag()) {
-      this.game.playPauseHandler();
-      return;
-    }
+    this.game.togglePlayPause();
   }
 
-  moveRowDown(row: Array<Cell>) {
+  private moveRowDown(row: Array<Cell>) {
     let unionFlag: boolean = true;
     let i: number = row.length - 2;
     while (i > -1) {
@@ -325,7 +289,7 @@ class Board {
     }
   }
 
-  checkSteps() {
+  private checkSteps() {
     for (let cell of this.cells) {
       let candidate = this.cells.find(item => {
         if (cell.getX() + 1 === item.getX() && cell.getY() === item.getY() && cell.getValue() === item.getValue()) {
@@ -346,10 +310,7 @@ class Board {
         return;
       }
     }
-    this.game.getStatistic().setScoreGameStatistic(this.game.getUsername(), this.game.getScoreCounter().getCount());
-    this.game.setInProgress(false);
-    this.game.getTimeCounter().stop();
-    this.game.finishedGame();
+    this.game.over();
   }
 
   checkGoal() {

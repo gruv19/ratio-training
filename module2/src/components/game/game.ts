@@ -3,7 +3,6 @@ import Board from "../board/board";
 import { defineInitParams } from '../../utils/cell';
 import {
   createMainTemplate,
-  createUsernameBlockTemplate,
   createMenuTemplate,
   createResultsTemplate
 } from '../../utils/templates';
@@ -46,7 +45,6 @@ class Game {
     this.scoreCounter.init();
     this.statistic.getTimeGameStatistic();
     this.statistic.getScoreGameStatistic();
-
     this.getMainElement().querySelector('.game__menu').innerHTML = '';
     this.getMainElement().querySelector('.game__menu').insertAdjacentHTML('beforeend', createMenuTemplate(this.username));
     setPlayPauseHandler(this.playPauseHandler, this);
@@ -71,7 +69,6 @@ class Game {
 
   render() {
     document.body.appendChild(this.getMainElement());
-    this.getMainElement().querySelector('.game__menu').insertAdjacentHTML('beforeend', createUsernameBlockTemplate())
     this.getMainElement().querySelector('.game__results').insertAdjacentHTML('beforeend', createResultsTemplate());
     this.getMainElement().querySelector('.game__board').append(this.boardComponent.getElement());
     this.getMainElement().querySelector('.game__statistic').append(this.statistic.getMainElement());
@@ -121,7 +118,7 @@ class Game {
       this.setUsername();
 
       this.statistic.setTimeGameStatistic(this.username, this.timeCounter.getCount());
-      this.continueGame();
+      this.resetOrContinue();
       return;
     }
     if (this.timeCounter.countIsMax()) {
@@ -134,18 +131,25 @@ class Game {
     this.inProgress = flag;
   }
 
-  continueGame() {
+  resetOrContinue() {
     const answer = confirm('Твой результат сохранен! Продолжить игру?');
     if (!answer) {
       this.reset();
     }
   }
 
-  finishedGame() {
+  resetOrFinish() {
     const answer = confirm(`Ходов больше нет! Ты набрал ${this.getScoreCounter().getCount()}! Начать заново?`);
     if (answer) {
       this.reset();
     }
+  }
+
+  over() {
+    this.getStatistic().setScoreGameStatistic(this.getUsername(), this.getScoreCounter().getCount());
+    this.setInProgress(false);
+    this.getTimeCounter().stop();
+    this.resetOrFinish();
   }
 
   reset() {
@@ -155,6 +159,9 @@ class Game {
     this.scoreCounter.init();
     this.scoreCounter.updateElement();
     this.playPauseFlag = false;
+    this.getMainElement().querySelector('.menu__button--play').innerHTML = `<svg class="menu__icon menu__icon--play" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/>
+        </svg>`;
     this.inProgress = true;
     this.statistic.reset();
     this.username = '';
@@ -184,6 +191,17 @@ class Game {
           <path d="M15.5,0c-1.103,0-2,0.897-2,2v40c0,1.103,0.897,2,2,2s2-0.897,2-2V2C17.5,0.897,16.603,0,15.5,0z"/>
           <path d="M28.5,0c-1.103,0-2,0.897-2,2v40c0,1.103,0.897,2,2,2s2-0.897,2-2V2C30.5,0.897,29.603,0,28.5,0z"/>
         </svg>`;
+    }
+  }
+
+  togglePlayPause() {
+    if (this.getTimeCounter().countIsZero()) {
+      this.playPauseHandler();
+      return;
+    }
+    if (!this.getPlayPauseFlag()) {
+      this.playPauseHandler();
+      return;
     }
   }
 };

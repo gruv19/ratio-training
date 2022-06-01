@@ -55,6 +55,14 @@ class Cell {
     this.element.style.left = `${this.x * cellInitParams.SIZE + (this.x + 1) * cellInitParams.GAP}px`;
     this.element.style.top = `${this.y * cellInitParams.SIZE + (this.y + 1) * cellInitParams.GAP}px`;
   }
+
+  toBackground() {
+    this.getElement().style.zIndex = '10';
+  }
+
+  toForeground() {
+    this.getElement().style.zIndex = '100';
+  }
 }
 
 export default Cell;

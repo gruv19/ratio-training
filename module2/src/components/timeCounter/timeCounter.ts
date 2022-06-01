@@ -48,7 +48,7 @@ class TimeCounter {
   }
 
   updateElement() {
-    this.getElement().textContent = `${timeNormalize(this.count)}`;
+    this.getElement().textContent = `${timeNormalize(this.getCount())}`;
   }
 
   getCount() {
