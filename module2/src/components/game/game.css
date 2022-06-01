@@ -37,7 +37,7 @@
   }
 }
 
-.username {
+/* .username {
   position: relative;
   min-width: 280px;
 }
@@ -89,7 +89,7 @@
     height: 50px;
     top: 10px;
   }
-}
+} */
 
 .menu {
   display: flex;
@@ -108,10 +108,6 @@
   margin-right: 20px;
   border: none;
   border-radius: 7px;
-}
-.menu__button:focus {
-  outline: none;
-  transform: scale(1.1);
 }
 .menu__button:hover {
   transform: scale(1.1);
