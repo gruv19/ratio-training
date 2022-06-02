@@ -28,9 +28,7 @@ function createMenuTemplate (username: string): string {
   return (`<div class="menu">
     <span class="menu__username">${username}</span>
     <button class="menu__button menu__button--play button button--play-pause" id="play">
-      <svg class="menu__icon menu__icon--play" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/>
-      </svg>
+      ${createPlayPauseButtonTemplate(true)}
     </button>
     <button class="menu__button menu__button--reset button button--reset" id="reset">
       <svg class="menu__icon menu__icon--reset" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -89,6 +87,17 @@ function createStatisticTemplate(): string {
   </div>`);
 }
 
+function createPlayPauseButtonTemplate(playPause:boolean): string {
+  return (playPause)
+    ? `<svg class="menu__icon menu__icon--play" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.54,9,8.88,3.46a3.42,3.42,0,0,0-5.13,3V17.58A3.42,3.42,0,0,0,7.17,21a3.43,3.43,0,0,0,1.71-.46L18.54,15a3.42,3.42,0,0,0,0-5.92Zm-1,4.19L7.88,18.81a1.44,1.44,0,0,1-1.42,0,1.42,1.42,0,0,1-.71-1.23V6.42a1.42,1.42,0,0,1,.71-1.23A1.51,1.51,0,0,1,7.17,5a1.54,1.54,0,0,1,.71.19l9.66,5.58a1.42,1.42,0,0,1,0,2.46Z"/>
+      </svg>`
+    : `<svg class="menu__icon--pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44">
+        <path d="M15.5,0c-1.103,0-2,0.897-2,2v40c0,1.103,0.897,2,2,2s2-0.897,2-2V2C17.5,0.897,16.603,0,15.5,0z"/>
+        <path d="M28.5,0c-1.103,0-2,0.897-2,2v40c0,1.103,0.897,2,2,2s2-0.897,2-2V2C30.5,0.897,29.603,0,28.5,0z"/>
+      </svg>`;
+}
+
 export {
   createCellTemplate,
   createBoardTemplate,
@@ -96,4 +105,5 @@ export {
   createMenuTemplate,
   createResultsTemplate,
   createStatisticTemplate,
+  createPlayPauseButtonTemplate,
 };
