@@ -16,14 +16,14 @@ class ScoreCounter {
     this.updateElement();
   }
 
-  getElement() {
+  private getElement() {
     if (!this.element) {
       this.element = this.game.getMainElement().querySelector('.results__score > .results__value');
     }
     return this.element;
   }
 
-  updateElement() {
+  private updateElement() {
     this.getElement().textContent = `${this.count}`;
   }
 
