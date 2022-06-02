@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('resize', () => {
     defineInitParams();
-    gameComponent.getBoardComponent()?.renderResize();
+    gameComponent.reRenderBoardComponent();
   });
 
 });
