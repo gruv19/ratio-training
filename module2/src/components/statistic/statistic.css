@@ -1,7 +1,6 @@
 .statistic{
   min-width: 280px;
 }
-.statistic__time{}
 .statistic__score{
   margin-top: 20px;
 }
@@ -32,9 +31,6 @@
   margin-top: 10px;
   font-size: 16px;
 }
-.statistic__cell-name{}
-.statistic__cell-result{}
-
 @media (min-width: 767px) {
   .statistic{
     display: flex;
