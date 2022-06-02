@@ -26,7 +26,7 @@ class Statistic {
     return this.mainElement;
   }
 
-  getTimeStatisticElement() {
+  private getTimeStatisticElement() {
     if (!this.timeStatisticElement) {
       this.timeStatisticElement = this.getMainElement().querySelector('.statistic__table--time');
     }
@@ -54,7 +54,7 @@ class Statistic {
     this.renderTimeGameStatistic();
   }
 
-  renderTimeGameStatistic() {
+  private renderTimeGameStatistic() {
     if (!this.timeStatistic.length) {
       this.getTimeStatisticElement().innerHTML = '<div class="statistic__row statistic__row--empty">Результатов пока нет</div>';
       return;
@@ -72,7 +72,7 @@ class Statistic {
     this.getTimeStatisticElement().insertAdjacentHTML('beforeend', statisticHTML);
   }
 
-  getScoreStatisticElement() {
+  private getScoreStatisticElement() {
     if (!this.scoreStatisticElement) {
       this.scoreStatisticElement = this.getMainElement().querySelector('.statistic__table--score');
     }
@@ -100,7 +100,7 @@ class Statistic {
     this.renderScoreGameStatistic();
   }
 
-  renderScoreGameStatistic() {
+  private renderScoreGameStatistic() {
     if (!this.scoreStatistic.length) {
       this.getScoreStatisticElement().innerHTML = '<div class="statistic__row statistic__row--empty">Результатов пока нет</div>';
       return;
