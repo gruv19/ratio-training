@@ -11,7 +11,7 @@ const setSEO = (title = 'nuntium.', description = '', keywords = '') => {
   titleElement.textContent = title;
 };
 
-const formatDate = (dateAsNumber) => new Date(dateAsNumber).toLocaleDateString('en-EN', { month: 'long', day: 'numeric',  year: 'numeric' });
+const formatDate = (dateAsNumber) => new Date(dateAsNumber * 1000).toLocaleDateString('en-EN', { month: 'long', day: 'numeric',  year: 'numeric' });
 
 const formatReadTime = (readTimeInSeconds) => Math.ceil(readTimeInSeconds / 60);
 
