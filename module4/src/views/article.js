@@ -1,3 +1,4 @@
+import loading from '../components/loading/loading';
 import header from '../components/header/header';
 import container from '../components/container/container';
 import fullArticle from '../components/full-article/full-article';
@@ -8,13 +9,18 @@ const article = async () => {
   const pathArray = window.location.pathname.split('/');
   const articleId = pathArray[pathArray.length - 1];
 
+  const appContainer = document.querySelector('#app');
+
+  const loadingElement = loading();
+  appContainer.append(loadingElement);
+
   const articleContent = await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleId}`)).json();
 
   const nextArticle = (articleContent.nextId !== null) ? await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleContent.nextId}`)).json() : { id: -1, title: ''};
   const prevArticle = (articleContent.prevId !== null) ? await (await fetch(`https://course.7t33n.ru/rest/v1/blog/article/${articleContent.prevId}`)).json() : { id: -1, title: ''};
 
-  const appContainer = document.querySelector('#app');
   appContainer.innerHTML = '';
+  loadingElement.remove();
 
   setSEO(`nuntium. - ${articleContent.seo.title}`, articleContent.seo.description, articleContent.seo.keywords);
 
