@@ -1,3 +1,4 @@
+import loading from '../components/loading/loading';
 import header from '../components/header/header';
 import container from '../components/container/container';
 import articleCard from '../components/article-card/article-card';
@@ -7,12 +8,18 @@ import { setSEO } from '../utils';
 const home = async () => {
   setSEO('nuntium. - home');
 
+  const appContainer = document.querySelector('#app');
+  appContainer.innerHTML = '';
+
+  const loadingElement = loading();
+  appContainer.append(loadingElement);
+
   const featuredArticleContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/featured/')).json();
   const articlesContent = await (await fetch('https://course.7t33n.ru/rest/v1/blog/articles/')).json();
   const articlesCount = 3;
 
-  const appContainer = document.querySelector('#app');
   appContainer.innerHTML = '';
+  loadingElement.remove();
 
   const headerElement = header();
   appContainer.append(headerElement);
