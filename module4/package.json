@@ -10,5 +10,8 @@
   "devDependencies": {
     "sass": "^1.51.0",
     "vite": "^2.9.7"
+  },
+  "dependencies": {
+    "aos": "3.0.0-beta.6"
   }
 }
