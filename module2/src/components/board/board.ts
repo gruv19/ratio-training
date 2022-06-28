@@ -109,22 +109,15 @@ class Board {
     let i: number = row.length - 2;
     while (i > -1) {
       const currentY = row[i].getY();
-      if (row[i].getValue() === row[i + 1].getValue()) {
-        if (unionFlag) {
-          this.unionCells(row[i], row[i + 1]);
-          row.splice(i, 1);
-          unionFlag = false;
-        } else {
-          const newX: number = row[i + 1].getX() + 1;
-          updateMapCoordinates({ x: row[i].getX(), y: row[i].getY() }, { x: newX, y: currentY }, mapCoordinates);
-          row[i].updatePosition(newX, currentY);
-          unionFlag = true;
-        }
-      } else {
+      if (row[i].getValue() !== row[i + 1].getValue() || !unionFlag) {
         const newX: number = row[i + 1].getX() + 1;
         updateMapCoordinates({ x: row[i].getX(), y: row[i].getY() }, { x: newX, y: currentY }, mapCoordinates);
         row[i].updatePosition(newX, currentY);
         unionFlag = true;
+      } else {
+        this.unionCells(row[i], row[i + 1]);
+        row.splice(i, 1);
+        unionFlag = false;
       }
       i--;
     }
@@ -162,22 +155,15 @@ class Board {
     let i: number = row.length - 2;
     while (i > -1) {
       const currentX = row[i].getX();
-      if (row[i].getValue() === row[i + 1].getValue()) {
-        if (unionFlag) {
-          this.unionCells(row[i], row[i + 1]);
-          row.splice(i, 1);
-          unionFlag = false;
-        } else {
-          const newY = row[i + 1].getY() + 1;
-          updateMapCoordinates({ x: row[i].getX(), y: row[i].getY() }, { x: currentX, y: newY }, mapCoordinates);
-          row[i].updatePosition(currentX, newY);
-          unionFlag = true;
-        }
-      } else {
+      if (row[i].getValue() !== row[i + 1].getValue() || !unionFlag) {
         const newY = row[i + 1].getY() + 1;
         updateMapCoordinates({ x: row[i].getX(), y: row[i].getY() }, { x: currentX, y: newY }, mapCoordinates);
         row[i].updatePosition(currentX, newY);
         unionFlag = true;
+      } else {
+        this.unionCells(row[i], row[i + 1]);
+        row.splice(i, 1);
+        unionFlag = false;
       }
       i--;
     }
@@ -215,22 +201,15 @@ class Board {
     let i: number = row.length - 2;
     while (i > -1) {
       const currentY = row[i].getY();
-      if (row[i].getValue() === row[i + 1].getValue()) {
-        if (unionFlag) {
-          this.unionCells(row[i], row[i + 1]);
-          row.splice(i, 1);
-          unionFlag = false;
-        } else {
-          const newX: number = row[i + 1].getX() - 1;
-          updateMapCoordinates({ x: row[i].getX(), y: row[i]. getY() }, { x: newX, y: currentY }, mapCoordinates);
-          row[i].updatePosition(newX, currentY);
-          unionFlag = true;
-        }
-      } else {
+      if (row[i].getValue() !== row[i + 1].getValue() || !unionFlag) {
         const newX: number = row[i + 1].getX() - 1;
         updateMapCoordinates({ x: row[i].getX(), y: row[i]. getY() }, { x: newX, y: currentY }, mapCoordinates);
         row[i].updatePosition(newX, currentY);
         unionFlag = true;
+      } else {
+        this.unionCells(row[i], row[i + 1]);
+        row.splice(i, 1);
+        unionFlag = false;
       }
       i--;
     }
@@ -268,22 +247,15 @@ class Board {
     let i: number = row.length - 2;
     while (i > -1) {
       const currentX: number = row[i].getX();
-      if (row[i].getValue() === row[i + 1].getValue()) {
-        if (unionFlag) {
-          this.unionCells(row[i], row[i + 1]);
-          row.splice(i, 1);
-          unionFlag = false;
-        } else {
-          const newY: number = row[i + 1].getY() - 1;
-          updateMapCoordinates({ x: row[i].getX(), y: row[i].getY() }, { x: currentX, y: newY }, mapCoordinates)
-          row[i].updatePosition(currentX, newY);
-          unionFlag = true;
-        }
-      } else {
+      if (row[i].getValue() !== row[i + 1].getValue() || !unionFlag) {
         const newY: number = row[i + 1].getY() - 1;
         updateMapCoordinates({ x: row[i].getX(), y: row[i].getY() }, { x: currentX, y: newY }, mapCoordinates)
         row[i].updatePosition(currentX, newY);
         unionFlag = true;
+      } else {
+        this.unionCells(row[i], row[i + 1]);
+        row.splice(i, 1);
+        unionFlag = false;
       }
       i--;
     }
