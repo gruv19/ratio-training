@@ -2,27 +2,27 @@ import Board from "../components/board/board";
 import Cell from "../components/cell/cell";
 import { boardInitParams } from '../const';
 
-function setKeyDownHandler(leftKeyHandler: Function, upKeyHandler: Function, rightKeyHandler: Function, downKeyHandler: Function, thisArg: Board): void {
+function setKeyDownHandler(horizontalHandler: Function, verticalHandler: Function, thisArg: Board): void {
   document.addEventListener('keydown', (event: KeyboardEvent) => {
     if (event.keyCode === 37) {
       event.preventDefault();
-      leftKeyHandler.apply(thisArg);
+      horizontalHandler.apply(thisArg, ['left', getTopLeftIndex]);
     } else if (event.keyCode === 38) {
       event.preventDefault();
-      upKeyHandler.apply(thisArg);
+      verticalHandler.apply(thisArg, ['up', getLeftTopIndex]);
     } else if (event.keyCode === 39) {
       event.preventDefault();
-      rightKeyHandler.apply(thisArg);
+      horizontalHandler.apply(thisArg, ['right', getTopRightIndex]);
     } else if (event.keyCode === 40) {
       event.preventDefault();
-      downKeyHandler.apply(thisArg);
+      verticalHandler.apply(thisArg, ['down', getLeftBottomIndex]);
     } else {
       return;
     }
   })
 }
 
-function setMouseMoveHandler(leftKeyHandler: Function, upKeyHandler: Function, rightKeyHandler: Function, downKeyHandler: Function, thisArg: Board): void {
+function setMouseMoveHandler(horizontalHandler: Function, verticalHandler: Function, thisArg: Board): void {
   const mouseDownPosition: { x: number, y: number } = { x: 0, y: 0 };
   const mouseUpPosition: { x: number, y: number } = { x: 0, y: 0 };
 
@@ -39,17 +39,17 @@ function setMouseMoveHandler(leftKeyHandler: Function, upKeyHandler: Function, r
 
     if (diffX >= diffY) {
       if (mouseDownPosition.x > mouseUpPosition.x) {
-        leftKeyHandler.apply(thisArg);
+        horizontalHandler.apply(thisArg, ['left', getTopLeftIndex]);
       } else if (mouseDownPosition.x < mouseUpPosition.x) {
-        rightKeyHandler.apply(thisArg);
+        horizontalHandler.apply(thisArg, ['right', getTopRightIndex]);
       } else {
         return;
       }
     } else {
       if (mouseDownPosition.y > mouseUpPosition.y) {
-        upKeyHandler.apply(thisArg);
+        verticalHandler.apply(thisArg, ['up', getLeftTopIndex]);
       } else if (mouseDownPosition.y < mouseUpPosition.y) {
-        downKeyHandler.apply(thisArg);
+        verticalHandler.apply(thisArg, ['down', getLeftBottomIndex]);
       } else {
         return;
       }
@@ -58,7 +58,7 @@ function setMouseMoveHandler(leftKeyHandler: Function, upKeyHandler: Function, r
 
 }
 
-function setTouchHandler(leftKeyHandler: Function, upKeyHandler: Function, rightKeyHandler: Function, downKeyHandler: Function, thisArg: Board): void {
+function setTouchHandler(horizontalHandler: Function, verticalHandler: Function, thisArg: Board): void {
   const touchStartPosition: { x: number, y: number } = { x: 0, y: 0 };
   const touchEndPosition: { x: number, y: number } = { x: 0, y: 0 };
 
@@ -76,17 +76,17 @@ function setTouchHandler(leftKeyHandler: Function, upKeyHandler: Function, right
 
     if (diffX >= diffY) {
       if (touchStartPosition.x > touchEndPosition.x) {
-        leftKeyHandler.apply(thisArg);
+        horizontalHandler.apply(thisArg, ['left', getTopLeftIndex]);
       } else if (touchStartPosition.x < touchEndPosition.x) {
-        rightKeyHandler.apply(thisArg);
+        horizontalHandler.apply(thisArg, ['right', getTopRightIndex]);
       } else {
         return;
       }
     } else {
       if (touchStartPosition.y > touchEndPosition.y) {
-        upKeyHandler.apply(thisArg);
+        verticalHandler.apply(thisArg, ['up', getLeftTopIndex]);
       } else if (touchStartPosition.y < touchEndPosition.y) {
-        downKeyHandler.apply(thisArg);
+        verticalHandler.apply(thisArg, ['down', getLeftBottomIndex]);
       } else {
         return;
       }
