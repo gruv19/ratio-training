@@ -87,6 +87,16 @@ function createStatisticTemplate(): string {
   </div>`);
 }
 
+function createStatisticItemTemplate(username: string = '', result: string = ''): string {
+  if (username && result) {
+    return `<div class="statistic__row">
+      <div class="statistic__cell-name">${username}</div>
+      <div class="statistic__cell-result">${result}</div>
+    </div>`;
+  }
+  return '<div class="statistic__row statistic__row--empty">Результатов пока нет</div>';
+}
+
 function createPlayPauseButtonTemplate(playPause:boolean): string {
   return (playPause)
     ? `<svg class="menu__icon menu__icon--play" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -105,5 +115,6 @@ export {
   createMenuTemplate,
   createResultsTemplate,
   createStatisticTemplate,
+  createStatisticItemTemplate,
   createPlayPauseButtonTemplate,
 };

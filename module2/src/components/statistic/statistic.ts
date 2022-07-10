@@ -1,4 +1,4 @@
-import { createStatisticTemplate } from '../../utils/templates';
+import { createStatisticTemplate, createStatisticItemTemplate } from '../../utils/templates';
 import { timeNormalize } from '../../utils/common';
 import './statistic.css';
 
@@ -56,7 +56,7 @@ class Statistic {
 
   private renderTimeGameStatistic() {
     if (!this.timeStatistic.length) {
-      this.getTimeStatisticElement().innerHTML = '<div class="statistic__row statistic__row--empty">Результатов пока нет</div>';
+      this.getTimeStatisticElement().innerHTML = createStatisticItemTemplate();
       return;
     }
     this.getTimeStatisticElement().innerHTML = '';
@@ -64,10 +64,7 @@ class Statistic {
     this.timeStatistic
       .sort((a: any, b: any) => a.time - b.time)
       .forEach((item: any) => {
-        statisticHTML += `<div class="statistic__row">
-          <div class="statistic__cell-name">${item.username}</div>
-          <div class="statistic__cell-result">${timeNormalize(item.time)}</div>
-        </div>`
+        statisticHTML += createStatisticItemTemplate(item.username, timeNormalize(item.time));
       });
     this.getTimeStatisticElement().insertAdjacentHTML('beforeend', statisticHTML);
   }
@@ -102,7 +99,7 @@ class Statistic {
 
   private renderScoreGameStatistic() {
     if (!this.scoreStatistic.length) {
-      this.getScoreStatisticElement().innerHTML = '<div class="statistic__row statistic__row--empty">Результатов пока нет</div>';
+      this.getScoreStatisticElement().innerHTML = createStatisticItemTemplate();
       return;
     }
     this.getScoreStatisticElement().innerHTML = '';
@@ -110,10 +107,7 @@ class Statistic {
     this.scoreStatistic
       .sort((a: any, b: any) => b.score - a.score)
       .forEach((item: any) => {
-        statisticHTML += `<div class="statistic__row">
-          <div class="statistic__cell-name">${item.username}</div>
-          <div class="statistic__cell-result">${item.score}</div>
-        </div>`
+        statisticHTML += createStatisticItemTemplate(item.username, item.score);
       });
     this.getScoreStatisticElement().insertAdjacentHTML('beforeend', statisticHTML);
   }
